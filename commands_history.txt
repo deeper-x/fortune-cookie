@@ -1,0 +1,6 @@
+git init
+# since we decided to stay in $GOPATH, we set GO111MODULE
+GO111MODULE=on
+go mod init
+go build ./...
+
