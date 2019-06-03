@@ -7,7 +7,7 @@ import (
 )
 
 var QuoteSentences Quotes
-var QuoteFile *os.File
+var quoteFile *os.File
 
 // Quotes todo doc
 type Quotes struct {
@@ -22,8 +22,9 @@ type Quote struct {
 
 // GenQuotes todo doc
 func GenQuotes() {
-	QuoteFile, _ = os.Open("assets/quotes.json")
+	quoteFile, _ = os.Open("assets/quotes.json")
 
-	byteVal, _ := ioutil.ReadAll(QuoteFile)
+	byteVal, _ := ioutil.ReadAll(quoteFile)
 	json.Unmarshal(byteVal, &QuoteSentences)
+	defer quoteFile.Close()
 }

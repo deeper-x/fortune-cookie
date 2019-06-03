@@ -23,5 +23,4 @@ func main() {
 
 	fmt.Println(qr.QuoteSentences.Quotes[index].QuoteText, qr.QuoteSentences.Quotes[index].QuoteAuthor)
 
-	defer qr.QuoteFile.Close()
 }
