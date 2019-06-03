@@ -2,11 +2,26 @@ package main
 
 import (
 	"fmt"
+	"math/rand"
+	"time"
 
-	"github.com/sirupsen/logrus"
+	qr "github.com/deeper-x/fortune-cookie/lib/quotereader"
 )
 
+// RandNum todo doc
+func RandNum() int {
+	rand.Seed(time.Now().UnixNano())
+
+	maxVal := len(qr.QuoteSentences.Quotes)
+
+	return rand.Intn(maxVal)
+}
+
 func main() {
-	logrus.Debug("hello")
-	fmt.Println("foo")
+	qr.GenQuotes()
+	index := RandNum()
+
+	fmt.Println(qr.QuoteSentences.Quotes[index].QuoteText, qr.QuoteSentences.Quotes[index].QuoteAuthor)
+
+	defer qr.QuoteFile.Close()
 }
