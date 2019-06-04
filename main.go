@@ -9,8 +9,11 @@ import (
 
 func main() {
 	qr.GenQuotes()
-	index := utils.RandNum(qr.QuoteSentences.Quotes)
+	totIn := len(qr.QuoteSentences.Quotes)
 
-	fmt.Println(qr.QuoteSentences.Quotes[index].QuoteText, qr.QuoteSentences.Quotes[index].QuoteAuthor)
+	index := utils.RandNum(totIn)
+
+	fmt.Println(qr.QuoteSentences.Quotes[index].QuoteText,
+		qr.QuoteSentences.Quotes[index].QuoteAuthor)
 
 }
