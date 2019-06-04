@@ -7,11 +7,11 @@ import (
 )
 
 func TestQuotereader(t *testing.T) {
-	quotereader.GenQuotes()
+	quotereader.LoadData()
 
-	var i interface{} = quotereader.QuoteSentences
+	var i interface{} = quotereader.Data
 
-	_, ok := i.(quotereader.Quotes)
+	_, ok := i.(quotereader.QContainer)
 
 	if ok != true {
 		t.Errorf("error on quote reading")

@@ -7,7 +7,7 @@ import (
 )
 
 func TestRand(t *testing.T) {
-	a := utils.RandNum(5)
+	a := utils.GenRandom(5)
 	var emptyInterf interface{} = a
 	_, ok := emptyInterf.(int)
 
