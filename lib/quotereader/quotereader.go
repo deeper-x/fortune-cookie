@@ -6,25 +6,27 @@ import (
 	"os"
 )
 
-var QuoteSentences Quotes
+// Data is the container of records: we write on it everything we read in JSON
+var Data QContainer
 var quoteFile *os.File
 
-// Quotes todo doc
-type Quotes struct {
-	Quotes []Quote `json:"quotes"`
+// QContainer defines a root container, with all quotes+authors
+type QContainer struct {
+	Records []Quote `json:"records"`
 }
 
-// Quote doc doc
+// Quote define each node in root json
 type Quote struct {
 	QuoteText   string `json:"quoteText"`
 	QuoteAuthor string `json:"quoteAuthor"`
 }
 
-// GenQuotes todo doc
-func GenQuotes() {
+// LoadData generates the records' list
+func LoadData() {
 	quoteFile, _ = os.Open("assets/quotes.json")
 
 	byteVal, _ := ioutil.ReadAll(quoteFile)
-	json.Unmarshal(byteVal, &QuoteSentences)
+	json.Unmarshal(byteVal, &Data)
+
 	defer quoteFile.Close()
 }

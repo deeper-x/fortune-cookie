@@ -8,12 +8,13 @@ import (
 )
 
 func main() {
-	qr.GenQuotes()
-	totIn := len(qr.QuoteSentences.Quotes)
+	qr.LoadData()
 
-	index := utils.RandNum(totIn)
+	totIn := len(qr.Data.Records)
+	index := utils.GenRandom(totIn)
 
-	fmt.Println(qr.QuoteSentences.Quotes[index].QuoteText,
-		qr.QuoteSentences.Quotes[index].QuoteAuthor)
+	quote := qr.Data.Records[index].QuoteText
+	author := qr.Data.Records[index].QuoteAuthor
 
+	fmt.Println(quote, author)
 }

@@ -5,8 +5,8 @@ import (
 	"time"
 )
 
-// RandNum todo doc
-func RandNum(totToCount int) int {
+// GenRandom todo doc
+func GenRandom(totToCount int) int {
 	rand.Seed(time.Now().UnixNano())
 
 	return rand.Intn(totToCount)
